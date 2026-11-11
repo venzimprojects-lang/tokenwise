@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="TokenWise — практический справочник по экономной работе с ChatGPT, Work и Codex. Без API-ключей и обещаний волшебной экономии.">
+  <meta name="theme-color" content="#f7f8f6">
+  <title>TokenWise — Work smarter with AI</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar container">
+    <a href="#top" class="brand" aria-label="TokenWise home"><span class="logo">T<span>↗</span></span><span>token<span class="brand-light">wise</span></span></a>
+    <nav aria-label="Sections" class="navlinks">
+      <a href="#config" data-i18n="navConfig">Configurator</a>
+      <a href="#limits" data-i18n="navLimits">Limits</a>
+      <a href="#measure" data-i18n="navMeasure">Measure</a>
+      <a href="#resources" data-i18n="navResources">Resources</a>
+    </nav>
+    <div class="language-switch" role="group" aria-label="Language"><button id="ru" type="button" aria-pressed="true">RU</button><button id="en" type="button" aria-pressed="false">EN</button></div>
+  </header>
+  <main id="top">
+    <section class="hero container">
+      <div class="eyebrow"><span class="dot"></span><span data-i18n="eyebrow">Open-source · Free · No account required</span></div>
+      <h1 data-i18n="heroTitle">Делай больше.<br><span>Трать меньше лимитов.</span></h1>
+      <p class="lede" data-i18n="heroDesc">Разберись в лимитах ChatGPT, Work и Codex. Выбери подходящий режим, получи чёткий промпт и проверь реальный расход — без догадок.</p>
+      <div class="hero-actions"><a href="#config" class="primary-link" data-i18n="start">Подобрать настройки <span aria-hidden="true">↗</span></a><a href="#limits" class="secondary-link" data-i18n="learn">Как работают лимиты ↓</a></div>
+      <div class="hero-notes"><span data-i18n="feature1">Без сервера</span><span data-i18n="feature2">Без API-ключей</span><span data-i18n="feature3">Русский + English</span></div>
+    </section>
+
+    <section class="container section" id="config">
+      <div class="section-head"><div><p class="kicker" data-i18n="sectionOne">01 / НАСТРОЙКА</p><h2 data-i18n="configTitle">Выбери задачу — получи план</h2></div><p data-i18n="configSubtitle">Рекомендации — отправная точка, а не гарантированная экономия.</p></div>
+      <div class="config-grid">
+        <div class="panel selector"><div class="panel-top"><span class="mini-label" data-i18n="taskPrompt">Что ты собираешься сделать?</span><span class="panel-index">01—05</span></div>
+          <div id="taskButtons" class="task-buttons" role="group" aria-label="Task type">
+            <button type="button" data-task="plan" class="task active" aria-pressed="true"><span class="task-symbol">✳</span><span data-i18n="taskPlan">Продумать идею или ТЗ</span><span class="task-arrow">↗</span></button>
+            <button type="button" data-task="browser" class="task" aria-pressed="false"><span class="task-symbol">▣</span><span data-i18n="taskBrowser">Работать с сайтом</span><span class="task-arrow">↗</span></button>
+            <button type="button" data-task="code" class="task" aria-pressed="false"><span class="task-symbol">⌘</span><span data-i18n="taskCode">Исправить код</span><span class="task-arrow">↗</span></button>
+            <button type="button" data-task="debug" class="task" aria-pressed="false"><span class="task-symbol">⌁</span><span data-i18n="taskDebug">Найти сложную ошибку</span><span class="task-arrow">↗</span></button>
+            <button type="button" data-task="audit" class="task" aria-pressed="false"><span class="task-symbol">◈</span><span data-i18n="taskAudit">Провести аудит</span><span class="task-arrow">↗</span></button>
+          </div>
+          <p class="footnote" data-i18n="notAutomatic">TokenWise ничего не меняет в настройках ChatGPT автоматически.</p>
+        </div>
+        <div class="panel result-panel"><div class="panel-top"><span class="mini-label" data-i18n="yourSetup">Твоя конфигурация</span><span class="status" data-i18n="recommendation">Рекомендация</span></div>
+          <h3 id="presetName"></h3><p id="presetDesc" class="preset-desc"></p>
+          <div class="metrics"><div><span data-i18n="surface">Режим</span><strong id="surface"></strong></div><div><span data-i18n="model">Модель</span><strong id="model"></strong></div><div><span>Reasoning</span><strong id="effort"></strong></div><div><span data-i18n="speed">Скорость</span><strong>Standard</strong></div></div>
+          <label for="taskDetail" class="mini-label" data-i18n="detailLabel">Конкретная задача (необязательно)</label>
+          <textarea id="taskDetail" rows="3" maxlength="500" data-i18n-placeholder="detailPlaceholder" placeholder="Например: исправить расчёт суммы в billing.py..."></textarea>
+          <div class="prompt-title"><span class="mini-label" data-i18n="readyPrompt">Готовый промпт</span><span class="prompt-kind">TXT</span></div>
+          <pre id="promptOutput" class="prompt" tabindex="0"></pre>
+          <div class="result-footer"><button id="copyPrompt" type="button" class="copy-button" data-i18n="copy">Скопировать промпт ↗</button><span class="disclaimer" data-i18n="availability">Наличие моделей зависит от тарифа и интерфейса</span></div>
+          <span id="copyStatus" class="sr-only" role="status" aria-live="polite"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section" id="limits"><div class="section-head"><div><p class="kicker" data-i18n="sectionTwo">02 / ОСНОВЫ</p><h2 data-i18n="limitsTitle">Пойми, что расходуется</h2></div><p data-i18n="limitsDesc">Токены, включённый лимит и кредиты — не одно и то же.</p></div>
+      <div class="info-grid">
+        <article class="info-card"><div class="info-index">01</div><h3 data-i18n="tokensTitle">Токены</h3><p data-i18n="tokensText">Объём обработанного и созданного моделью содержимого. Не равен процентам лимита подписки.</p></article>
+        <article class="info-card"><div class="info-index">02</div><h3 data-i18n="allowanceTitle">Лимит Work / Codex</h3><p data-i18n="allowanceText">Зависит от модели, задачи, рассуждений, контекста и инструментов. Одно сообщение не имеет фиксированной стоимости.</p></article>
+        <article class="info-card"><div class="info-index">03</div><h3 data-i18n="resetTitle">Сброс</h3><p data-i18n="resetText">Пятчасовой и недельный периоды могут действовать одновременно. Точную дату обновления смотри в Settings → Usage.</p></article>
+      </div>
+      <div class="note"><span class="note-mark">!</span><p data-i18n="futureNote">Правила и доступные модели меняются. OpenAI анонсировала изменение общей системы учёта ChatGPT и Codex с декабря 2026 года — всегда проверяй актуальные условия.</p></div>
+    </section>
+
+    <section class="container section" id="measure"><div class="section-head"><div><p class="kicker" data-i18n="sectionThree">03 / ПРОВЕРКА</p><h2 data-i18n="measureTitle">Измеряй, а не угадывай</h2></div><p data-i18n="measureDesc">Запиши остаток лимита до и после одной задачи. Мы не отправляем данные никуда.</p></div>
+      <div class="measurement panel"><div class="measure-fields">
+        <div class="measure-group"><h3 data-i18n="before">До задачи</h3><label for="before5" data-i18n="fiveRemaining">5 ч · осталось %</label><input id="before5" type="number" min="0" max="100" step="0.1" inputmode="decimal" placeholder="80"><label for="beforeWeek" data-i18n="weekRemaining">Неделя · осталось %</label><input id="beforeWeek" type="number" min="0" max="100" step="0.1" inputmode="decimal" placeholder="65"></div>
+        <div class="measure-group"><h3 data-i18n="after">После задачи</h3><label for="after5" data-i18n="fiveRemaining">5 ч · осталось %</label><input id="after5" type="number" min="0" max="100" step="0.1" inputmode="decimal" placeholder="74"><label for="afterWeek" data-i18n="weekRemaining">Неделя · осталось %</label><input id="afterWeek" type="number" min="0" max="100" step="0.1" inputmode="decimal" placeholder="63"></div>
+        <div class="measure-result"><span class="mini-label" data-i18n="observed">Наблюдаемое изменение</span><div class="big-number" id="fiveDelta">—</div><span class="dim" data-i18n="fiveLabel">п.п. пятчасового лимита</span><div class="second-number" id="weekDelta">—</div><span class="dim" data-i18n="weekLabel">п.п. недельного лимита</span><button type="button" id="clearMeasure" class="text-button" data-i18n="clear">Очистить значения ↗</button></div>
+      </div><p id="measurementMessage" class="measurement-message" role="status" aria-live="polite" data-i18n="measurementWarning">Сравнение корректно только в одном окне без сбросов и параллельных задач. Это изменение баланса, не точная цена действия.</p></div>
+    </section>
+
+    <section class="container section" id="resources"><div class="section-head"><div><p class="kicker" data-i18n="sectionFour">04 / РЕСУРСЫ</p><h2 data-i18n="resourceTitle">Материалы и источники</h2></div><p data-i18n="resourceDesc">Проверяемые факты. Никаких «сэкономь 95% за один клик».</p></div>
+      <div class="resources-list">
+        <a href="https://help.openai.com/en/articles/20001516-managing-usage-with-gpt-6-astra-in-work-and-codex" target="_blank" rel="noopener noreferrer"><span>01</span><strong data-i18n="sourceOne">Официально: лимиты Work и Codex</strong><small>OpenAI Help Center ↗</small></a>
+        <a href="https://help.openai.com/en/articles/20001625-understanding-chatgpt-and-codex-usage-limits" target="_blank" rel="noopener noreferrer"><span>02</span><strong data-i18n="sourceTwo">Официально: изменения системы учёта</strong><small>OpenAI Help Center ↗</small></a>
+        <a href="https://help.openai.com/en/articles/20001478-reviewing-work-and-codex-usage-and-using-personal-analytics-in-chatgpt-desktop" target="_blank" rel="noopener noreferrer"><span>03</span><strong data-i18n="sourceThree">Официально: аналитика Usage</strong><small>OpenAI Help Center ↗</small></a>
+        <a href="https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra" target="_blank" rel="noopener noreferrer"><span>04</span><strong data-i18n="sourceFour">Компактные инструкции для агентов</strong><small>OpenAI Developers ↗</small></a>
+      </div>
+      <p class="last-reviewed" data-i18n="verified">Факты проверены 11 ноября 2026 · Независимый проект, не связан с OpenAI.</p>
+    </section>
+  </main>
+  <footer class="footer container"><span class="brand footer-brand"><span class="logo">T<span>↗</span></span> tokenwise</span><span data-i18n="footerText">Open source. MIT. Built for deliberate AI work.</span><a href="#top" data-i18n="backToTop">Наверх ↑</a></footer>
+</body>
+</html>
