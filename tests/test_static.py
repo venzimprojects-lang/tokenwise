@@ -23,6 +23,18 @@ class TestStatic(unittest.TestCase):
         html=(ROOT/'website/index.html').read_text()
         self.assertGreaterEqual(html.count('https://help.openai.com/'),3)
         self.assertIn('не связан с OpenAI', (ROOT/'website/app.js').read_text())
+    def test_beginner_onboarding(self):
+        html=(ROOT/'website/index.html').read_text()
+        js=(ROOT/'website/app.js').read_text()
+        css=(ROOT/'website/styles.css').read_text()
+        self.assertIn('id="beginnerTitle"',html)
+        self.assertIn('id="tryExample"',html)
+        self.assertIn('data-beginner="usageWhereTitle"',html)
+        self.assertIn("const beginnerStrings=",js)
+        self.assertIn("updateBeginnerLanguage()",js)
+        self.assertIn("task='code'",js)
+        self.assertIn('.beginner-steps',css)
+
     def test_no_secrets(self):
         combined='\n'.join(p.read_text() for p in (ROOT/'website').iterdir() if p.is_file())
         self.assertNotRegex(combined,r'sk-proj-[A-Za-z0-9]{12,}')
