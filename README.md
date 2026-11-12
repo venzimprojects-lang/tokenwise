@@ -2,7 +2,7 @@
 
 **Stop wasting AI allowance. Ship more with fewer agent loops.**
 
-[Русская версия](README.ru.md) · [Web app](website/) · [Guides](docs/) · [Prompt library](prompts/)
+[Русская версия](README.ru.md) · [Web app source](website/index.html) · [Guides](docs/) · [Prompt library](prompts/)
 
 TokenWise is a **free, static, privacy-first, bilingual (EN/RU) guide and task preset builder** for ChatGPT, Work and Codex users. It helps you **scope work, choose an appropriate mode, and measure actual usage**. It does **not** access your account or claim to predict token cost.
 
@@ -26,9 +26,11 @@ Model suggestions are task heuristics, not prices, promises, or official OpenAI 
 
 ## Quick start
 
-Open `website/index.html` in a browser. No install, API key, cookies, external requests, backend, or build tooling required.
+**There is no hosted web app URL yet: this repository is private and Pages is not deployed.** Clicking `website/index.html` on GitHub displays the source file, not the running app.
 
-To host as GitHub Pages: Settings → Pages → Deploy from a branch → `/docs` is not used in this repo, so either publish `website/` via a Pages GitHub Action or configure a Pages workflow. A ready-to-use Action is provided in `.github/workflows/pages.yml`; enable Pages source **GitHub Actions**.
+To use the app locally: **Code → Download ZIP**, extract the archive, then open `website/index.html` in a browser. No install, API key, cookies, backend or build tooling required.
+
+For public release, enable GitHub Pages with **GitHub Actions** as the source, then manually run `.github/workflows/pages.yml`. Do not mistake the GitHub file link for a live website.
 
 ## Scope and limitations
 
@@ -60,6 +62,6 @@ node --check website/app.js
 
 ## Contribute
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). For model/limit claims, cite an official source and include a verified date. Never upload screenshots with account details, secrets or private repo content.
+See [CONTRIBUTING.md](CONTRIBUTING.md) ([Русская версия](CONTRIBUTING.ru.md)). For model/limit claims, cite an official source and include a verified date. Never upload screenshots with account details, secrets or private repo content.
 
 MIT licensed. See [LICENSE](LICENSE).
