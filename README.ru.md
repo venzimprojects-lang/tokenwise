@@ -2,6 +2,8 @@
 
 **Меньше лишних действий — больше полезной работы с ChatGPT, Work и Codex.**
 
+## [🚀 ОТКРЫТЬ TOKENWISE — ЗАПУСТИТЬ ПРИЛОЖЕНИЕ](https://venzimprojects-lang.github.io/tokenwise/)
+
 <p align="center">
   <a href="https://venzimprojects-lang.github.io/tokenwise/">
     <img src="assets/open-tokenwise.svg" alt="Открыть TokenWise — бесплатный интерактивный конфигуратор" width="780">
