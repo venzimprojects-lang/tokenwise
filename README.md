@@ -2,66 +2,52 @@
 
 **Stop wasting AI allowance. Ship more with fewer agent loops.**
 
-[Русская версия](README.ru.md) · [Web app source](website/index.html) · [Guides](docs/) · [Prompt library](prompts/)
+<p align="center">
+  <a href="https://venzimprojects-lang.github.io/tokenwise/">
+    <img src="assets/open-tokenwise.svg" alt="Open TokenWise — launch the free interactive web app" width="780">
+  </a>
+</p>
 
-TokenWise is a **free, static, privacy-first, bilingual (EN/RU) guide and task preset builder** for ChatGPT, Work and Codex users. It helps you **scope work, choose an appropriate mode, and measure actual usage**. It does **not** access your account or claim to predict token cost.
+<p align="center">
+  <a href="https://venzimprojects-lang.github.io/tokenwise/"><strong>▶ Launch the web app</strong></a> ·
+  <a href="README.ru.md">Русский</a> ·
+  <a href="CONTRIBUTING.md">Contribute</a>
+</p>
 
+TokenWise is a **free, static, privacy-first, bilingual (EN/RU) guide and task preset builder** for ChatGPT, Work and Codex. It helps you **scope work, choose an appropriate mode, and measure actual usage**. No account, API key, backend or installation needed.
 
-## First-time users (V1.1)
+## Start in 3 steps
 
-1. Choose a task, or tap the example about fixing a code bug.
-2. Follow the *What do I do with these settings?* panel. Choose model and reasoning manually in your ChatGPT / Codex interface; TokenWise never changes account settings.
-3. Enter your own task, copy the prompt and paste it into ChatGPT or Codex.
-4. Open **Settings → Usage** before and after the task if you wish to estimate observed allowance change. Only compare readings in the same window with no reset or concurrent agent work.
+1. **[Open TokenWise](https://venzimprojects-lang.github.io/tokenwise/)** and select what you want to do — planning, browsing, coding, debugging or auditing.
+2. Review the suggested settings, describe your task, and **copy the focused prompt** into ChatGPT or Codex. Settings must be selected manually in your own interface.
+3. Optionally record remaining allowance in **Settings → Usage** before and after to compare a single task. Make comparisons only in the same window, without resets or concurrent agents.
 
-Model suggestions are task heuristics, not prices, promises, or official OpenAI recommendations. This project is currently under private pre-release testing.
+## What you'll find
 
-## What it includes
+- Interactive task configurator with five scenarios, reasoning guidance and copyable prompts.
+- Plain-language explanations of tokens, five-hour/weekly allowance and usage resets.
+- Manual usage comparison that runs entirely inside your browser; no account data is sent.
+- Focused prompts, a short `AGENTS.md` template, and bilingual documentation.
 
-- Interactive task configurator with Chat / Work / Codex suggestions and editable, copyable task prompts.
-- Plain-language explanations of tokens, five-hour and weekly allowance windows, and usage analytics.
-- Ready-to-adapt task prompts and a lean `AGENTS.md` starter template.
-- A manual before/after measurement worksheet that never uploads your usage information.
-- Official source links and a last-reviewed date: **2026-11-11**.
+## Important limitations
 
-## Quick start
+- This project is **independent, not affiliated with or endorsed by OpenAI**.
+- Presets are suggestions, **not guarantees** or official pricing. Smaller models may require retries; costs vary by task, context, reasoning and tools.
+- Subscription allowance percentages are **not** API token counts or dollars. Compare similar completed tasks.
+- Model availability and resets vary by plan and change over time. **Settings → Usage** is authoritative for your account.
+- The explanatory sources were last reviewed on **November 11, 2026**.
 
-**There is no hosted web app URL yet: this repository is private and Pages is not deployed.** Clicking `website/index.html` on GitHub displays the source file, not the running app.
+## Developers
 
-To use the app locally: **Code → Download ZIP**, extract the archive, then open `website/index.html` in a browser. No install, API key, cookies, backend or build tooling required.
-
-For public release, enable GitHub Pages with **GitHub Actions** as the source, then manually run `.github/workflows/pages.yml`. Do not mistake the GitHub file link for a live website.
-
-## Scope and limitations
-
-- This is an **independent community project**, not affiliated with or endorsed by OpenAI.
-- Presets are **heuristics**, not guarantees. A smaller model may need more retries; performance and consumption vary by task, plan, context, model, reasoning settings and tools.
-- Model availability and resets depend on plan and rollout. Read the dates shown in **Settings → Usage** rather than assuming a fixed refresh time.
-- ChatGPT subscription allowance is **not** the same as API token pricing. Do not convert allowance percentages to dollars or token counts.
-- No promises of a fixed percent reduction. Compare **similar completed tasks** and their observable usage.
-- Guidance may change. Please open an issue with a primary-source link when you spot a change.
-
-## Project layout
-
-```text
-docs/           Explanations and official references
-prompts/        Focused instructions for agents
-templates/      Small AGENTS.md template
-presets/        Task presets and selection rationale
-website/        Dependency-free interactive web app
-tests/          Static smoke checks
-.github/        Pages deployment and checks
-```
-
-## Test
+The app is static HTML/CSS/JS in [website/](website/); all source is included. You can clone the repository and open `website/index.html` locally.
 
 ```bash
 python3 -m unittest discover -s tests -v
 node --check website/app.js
 ```
 
-## Contribute
+Project directories: `website/` (web app), `docs/` (guides and sources), `prompts/` (task prompts), `presets/` (selection rationale), `templates/` (AGENTS.md), `tests/` (checks).
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) ([Русская версия](CONTRIBUTING.ru.md)). For model/limit claims, cite an official source and include a verified date. Never upload screenshots with account details, secrets or private repo content.
+Contribute via [CONTRIBUTING.md](CONTRIBUTING.md) or [Русское руководство](CONTRIBUTING.ru.md). Please never post private usage screenshots, keys or account details.
 
-MIT licensed. See [LICENSE](LICENSE).
+MIT licensed — see [LICENSE](LICENSE).
