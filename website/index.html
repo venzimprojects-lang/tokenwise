@@ -30,6 +30,16 @@
       <div class="hero-notes"><span data-i18n="feature1">Без сервера</span><span data-i18n="feature2">Без API-ключей</span><span data-i18n="feature3">Русский + English</span></div>
     </section>
 
+    <section class="container beginner-section" aria-labelledby="beginnerTitle">
+      <div class="beginner-heading"><span class="kicker" data-beginner="introKicker">НАЧНИ ЗДЕСЬ</span><h2 id="beginnerTitle" data-beginner="introTitle">Впервые здесь? Всё займёт три шага.</h2><p data-beginner="introDesc">Не нужно разбираться в программировании или токенах. Выбери свою задачу и следуй инструкции.</p></div>
+      <div class="beginner-steps">
+        <div class="beginner-step"><span class="step-number">01</span><strong data-beginner="stepOneTitle">Выбери, что хочешь сделать</strong><p data-beginner="stepOneDesc">Начни с конфигуратора ниже: выбери один из пяти сценариев.</p></div>
+        <div class="beginner-step"><span class="step-number">02</span><strong data-beginner="stepTwoTitle">Скопируй готовое задание</strong><p data-beginner="stepTwoDesc">Впиши детали, нажми «Скопировать» и вставь текст в ChatGPT.</p></div>
+        <div class="beginner-step"><span class="step-number">03</span><strong data-beginner="stepThreeTitle">Проверь результат</strong><p data-beginner="stepThreeDesc">После задачи сравни остаток лимита до и после в Settings → Usage.</p></div>
+      </div>
+      <div class="example-strip"><div><strong data-beginner="exampleTitle">Пример: «Хочу исправить одну ошибку в коде»</strong><p data-beginner="exampleDesc">Нажми кнопку — мы выберем подходящий сценарий. Настройки можно изменить вручную в ChatGPT.</p></div><a href="#config" class="example-link" id="tryExample" data-beginner="exampleButton">Попробовать пример ↗</a></div>
+    </section>
+
     <section class="container section" id="config">
       <div class="section-head"><div><p class="kicker" data-i18n="sectionOne">01 / НАСТРОЙКА</p><h2 data-i18n="configTitle">Выбери задачу — получи план</h2></div><p data-i18n="configSubtitle">Рекомендации — отправная точка, а не гарантированная экономия.</p></div>
       <div class="config-grid">
@@ -46,6 +56,12 @@
         <div class="panel result-panel"><div class="panel-top"><span class="mini-label" data-i18n="yourSetup">Твоя конфигурация</span><span class="status" data-i18n="recommendation">Рекомендация</span></div>
           <h3 id="presetName"></h3><p id="presetDesc" class="preset-desc"></p>
           <div class="metrics"><div><span data-i18n="surface">Режим</span><strong id="surface"></strong></div><div><span data-i18n="model">Модель</span><strong id="model"></strong></div><div><span>Reasoning</span><strong id="effort"></strong></div><div><span data-i18n="speed">Скорость</span><strong>Standard</strong></div></div>
+          <div class="howto-panel" aria-labelledby="howtoTitle"><strong id="howtoTitle" data-beginner="howtoTitle">Что делать с этими настройками?</strong>
+            <ol><li data-beginner="howtoStepOne">Открой ChatGPT или Codex, выбери рекомендованный режим, если он доступен.</li>
+            <li data-beginner="howtoStepTwo">Выстави модель и уровень рассуждений вручную. Если нужного названия нет, выбери доступную аналогичную модель.</li>
+            <li data-beginner="howtoStepThree">Вставь скопированный промпт, проверь задачу и отправь.</li></ol>
+            <details><summary data-beginner="settingsHelp">Что означают модель, Reasoning и Standard?</summary><p data-beginner="settingsExplain">Модель определяет возможности помощника. Reasoning — глубину рассуждений: Low обычно подходит для простых задач, Medium или High — для сложных. Standard — обычная скорость. Точный расход зависит от задачи.</p></details>
+          </div>
           <label for="taskDetail" class="mini-label" data-i18n="detailLabel">Конкретная задача (необязательно)</label>
           <textarea id="taskDetail" rows="3" maxlength="500" data-i18n-placeholder="detailPlaceholder" placeholder="Например: исправить расчёт суммы в billing.py..."></textarea>
           <div class="prompt-title"><span class="mini-label" data-i18n="readyPrompt">Готовый промпт</span><span class="prompt-kind">TXT</span></div>
@@ -66,6 +82,7 @@
     </section>
 
     <section class="container section" id="measure"><div class="section-head"><div><p class="kicker" data-i18n="sectionThree">03 / ПРОВЕРКА</p><h2 data-i18n="measureTitle">Измеряй, а не угадывай</h2></div><p data-i18n="measureDesc">Запиши остаток лимита до и после одной задачи. Мы не отправляем данные никуда.</p></div>
+      <div class="usage-walkthrough"><strong data-beginner="usageWhereTitle">Где взять проценты?</strong><p data-beginner="usageWhereText">Открой ChatGPT → Settings → Usage. Перепиши, сколько <em>осталось</em> в пятчасовом и недельном лимитах перед задачей. После выполнения вернись туда и запиши новые значения.</p><p data-beginner="usageWhereNote">Не сравнивай показания после сброса, в разных окнах или во время работы других агентов. Данные остаются в твоём браузере и нигде не сохраняются.</p></div>
       <div class="measurement panel"><div class="measure-fields">
         <div class="measure-group"><h3 data-i18n="before">До задачи</h3><label for="before5" data-i18n="fiveRemaining">5 ч · осталось %</label><input id="before5" type="number" min="0" max="100" step="0.1" inputmode="decimal" placeholder="80"><label for="beforeWeek" data-i18n="weekRemaining">Неделя · осталось %</label><input id="beforeWeek" type="number" min="0" max="100" step="0.1" inputmode="decimal" placeholder="65"></div>
         <div class="measure-group"><h3 data-i18n="after">После задачи</h3><label for="after5" data-i18n="fiveRemaining">5 ч · осталось %</label><input id="after5" type="number" min="0" max="100" step="0.1" inputmode="decimal" placeholder="74"><label for="afterWeek" data-i18n="weekRemaining">Неделя · осталось %</label><input id="afterWeek" type="number" min="0" max="100" step="0.1" inputmode="decimal" placeholder="63"></div>
