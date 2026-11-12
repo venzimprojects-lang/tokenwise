@@ -1,7 +1,8 @@
 name: Deploy GitHub Pages
-# Publish only after GitHub Pages is explicitly configured for release.
-# Do not run Pages deployment on each private development commit.
+# Publish the site automatically whenever the public main branch changes.
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
