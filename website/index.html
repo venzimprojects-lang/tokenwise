@@ -8,16 +8,18 @@
   <title>TokenWise — Work smarter with AI</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="guide.css">
   <script src="app.js" defer></script>
+  <script src="guide.js" defer></script>
 </head>
 <body>
   <header class="topbar container">
     <a href="#top" class="brand" aria-label="TokenWise home"><span class="logo">T<span>↗</span></span><span>token<span class="brand-light">wise</span></span></a>
     <nav aria-label="Sections" class="navlinks">
-      <a href="#config" data-i18n="navConfig">Configurator</a>
-      <a href="#limits" data-i18n="navLimits">Limits</a>
+      <a href="#start" data-i18n="navConfig">Configurator</a>
+      <a href="#library" data-i18n="navLimits">Limits</a>
       <a href="#measure" data-i18n="navMeasure">Measure</a>
-      <a href="#resources" data-i18n="navResources">Resources</a>
+      <a href="#config" data-i18n="navResources">Resources</a>
     </nav>
     <div class="language-switch" role="group" aria-label="Language"><button id="ru" type="button" aria-pressed="true">RU</button><button id="en" type="button" aria-pressed="false">EN</button></div>
   </header>
@@ -26,21 +28,88 @@
       <div class="eyebrow"><span class="dot"></span><span data-i18n="eyebrow">Open-source · Free · No account required</span></div>
       <h1 data-i18n="heroTitle">Делай больше.<br><span>Трать меньше лимитов.</span></h1>
       <p class="lede" data-i18n="heroDesc">Разберись в лимитах ChatGPT, Work и Codex. Выбери подходящий режим, получи чёткий промпт и проверь реальный расход — без догадок.</p>
-      <div class="hero-actions"><a href="#config" class="primary-link" data-i18n="start">Подобрать настройки <span aria-hidden="true">↗</span></a><a href="#limits" class="secondary-link" data-i18n="learn">Как работают лимиты ↓</a></div>
+      <div class="hero-actions"><a href="#start" class="primary-link" data-i18n="start">Подобрать настройки <span aria-hidden="true">↗</span></a><a href="#library" class="secondary-link" data-i18n="learn">Как работают лимиты ↓</a></div>
       <div class="hero-notes"><span data-i18n="feature1">Без сервера</span><span data-i18n="feature2">Без API-ключей</span><span data-i18n="feature3">Русский + English</span></div>
     </section>
 
-    <section class="container beginner-section" aria-labelledby="beginnerTitle">
-      <div class="beginner-heading"><span class="kicker" data-beginner="introKicker">НАЧНИ ЗДЕСЬ</span><h2 id="beginnerTitle" data-beginner="introTitle">Впервые здесь? Всё займёт три шага.</h2><p data-beginner="introDesc">Не нужно разбираться в программировании или токенах. Выбери свою задачу и следуй инструкции.</p></div>
-      <div class="beginner-steps">
-        <div class="beginner-step"><span class="step-number">01</span><strong data-beginner="stepOneTitle">Выбери, что хочешь сделать</strong><p data-beginner="stepOneDesc">Начни с конфигуратора ниже: выбери один из пяти сценариев.</p></div>
-        <div class="beginner-step"><span class="step-number">02</span><strong data-beginner="stepTwoTitle">Скопируй готовое задание</strong><p data-beginner="stepTwoDesc">Впиши детали, нажми «Скопировать» и вставь текст в ChatGPT.</p></div>
-        <div class="beginner-step"><span class="step-number">03</span><strong data-beginner="stepThreeTitle">Проверь результат</strong><p data-beginner="stepThreeDesc">После задачи сравни остаток лимита до и после в Settings → Usage.</p></div>
+    <section class="container guide-start" id="start" aria-labelledby="guideHeading">
+      <div class="section-head guide-head">
+        <div><p class="kicker" data-guide-key="quickKicker">01 / НАЙДЁМ РЕШЕНИЕ</p><h2 id="guideHeading" data-guide-key="quickTitle">Что хочешь улучшить в работе с ИИ?</h2></div>
+        <p data-guide-key="quickIntro">Выбери знакомую проблему. Сложных терминов не требуется: объяснение подстроится под твой опыт.</p>
       </div>
-      <div class="example-strip"><div><strong data-beginner="exampleTitle">Пример: «Хочу исправить одну ошибку в коде»</strong><p data-beginner="exampleDesc">Нажми кнопку — мы выберем подходящий сценарий. Настройки можно изменить вручную в ChatGPT.</p></div><a href="#config" class="example-link" id="tryExample" data-beginner="exampleButton">Попробовать пример ↗</a></div>
+      <div class="guide-grid">
+        <div class="guide-panel">
+          <h3 data-guide-key="issueQuestion">С чем помочь?</h3>
+          <div id="guideIssueList" class="guide-issues" role="group" aria-label="Выбор проблемы"></div>
+          <div class="guide-role-title"><h3 data-guide-key="roleQuestion">Как ты пользуешься ИИ?</h3><p data-guide-key="roleNote">Это не тест навыков — можно переключить в любой момент.</p></div>
+          <div id="guideRoles" class="guide-roles" role="group" aria-label="Уровень опыта"></div>
+        </div>
+        <div class="guide-panel guide-response" aria-live="polite">
+          <span class="guide-label" data-guide-key="answerLabel">ТВОЙ ПЛАН</span>
+          <h3 id="guideAnswerTitle"></h3>
+          <p id="guideAnswerIntro" class="guide-answer-intro"></p>
+          <div id="guideProductWrap" class="guide-product-wrap">
+            <p class="guide-small-title" data-guide-key="productQuestion">Где появилось ограничение?</p>
+            <div id="guideProducts" class="guide-products" role="group" aria-label="Где возникла проблема"></div>
+          </div>
+          <ol id="guideAnswerSteps" class="guide-steps"></ol>
+          <div class="guide-tip"><strong data-guide-key="personalTip">Совет с учётом твоего опыта</strong><p id="guideAnswerTip"></p></div>
+          <p class="guide-fine" data-guide-key="honestNote">TokenWise не видит твой аккаунт, не увеличивает лимиты и не переключает настройки за тебя. Правила и доступность функций зависят от тарифа.</p>
+          <div class="guide-answer-actions">
+            <a href="#library" class="guide-btn" data-guide-key="readMore">Разобраться подробнее ↓</a>
+            <a href="#examples" class="guide-quiet-link" data-guide-key="examplesLink">Готовые примеры заданий ↓</a>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="container section" id="config">
+    <section class="container guide-library" id="library" aria-labelledby="libraryTitle">
+      <div class="section-head">
+        <div><p class="kicker" data-guide-key="libraryKicker">02 / МИНИ-ЭНЦИКЛОПЕДИЯ</p><h2 id="libraryTitle" data-guide-key="libraryTitle">Понятно об использовании ChatGPT</h2></div>
+        <p data-guide-key="libraryDesc">Короткие статьи, практические примеры и объяснения терминов. Можно начать с любого вопроса.</p>
+      </div>
+      <label class="guide-search-label" for="guideSearch" data-guide-key="searchLabel">Найти ответ или термин</label>
+      <input id="guideSearch" class="guide-search" type="search" autocomplete="off" placeholder="Например: лимиты, модель, промпт..." aria-controls="guideArticles guideGlossary">
+      <div class="guide-library-grid">
+        <div class="guide-library-list">
+          <h3 data-guide-key="topicsTitle">Темы справочника</h3>
+          <div id="guideArticles" class="guide-articles"></div>
+          <p id="guideNoResults" class="guide-empty" hidden></p>
+        </div>
+        <article id="guideArticleView" class="guide-article-detail" aria-live="polite">
+          <span class="guide-label" data-guide-key="articleLabel">КРАТКО И ПО ДЕЛУ</span>
+          <h3 id="guideArticleTitle"></h3>
+          <p id="guideArticleIntro"></p>
+          <ul id="guideArticlePoints"></ul>
+          <p id="guideArticleMeta" class="guide-fine"></p>
+          <a id="guideArticleSource" target="_blank" rel="noopener noreferrer" class="guide-source" href="https://help.openai.com/"></a>
+        </article>
+      </div>
+      <div class="guide-glossary">
+        <h3 data-guide-key="glossaryTitle">Словарь без сложных слов</h3>
+        <p class="guide-glossary-desc" data-guide-key="glossaryDesc">Нажми на термин, чтобы увидеть пример.</p>
+        <div id="guideGlossary" class="guide-glossary-grid"></div>
+      </div>
+    </section>
+
+    <section class="container guide-examples" id="examples" aria-labelledby="exampleTitle">
+      <div class="section-head">
+        <div><p class="kicker" data-guide-key="examplesKicker">03 / ПРИМЕРЫ</p><h2 id="exampleTitle" data-guide-key="examplesTitle">Готовые задания для разных задач</h2></div>
+        <p data-guide-key="examplesDesc">Выбери пример, измени детали под себя и скопируй в ChatGPT или Codex.</p>
+      </div>
+      <div class="guide-example-grid">
+        <div id="guideExampleList" class="guide-example-list" role="group" aria-label="Примеры задач"></div>
+        <div class="guide-example-preview">
+          <label for="guideExampleText" data-guide-key="exampleEdit">Задание — можно редактировать</label>
+          <textarea id="guideExampleText" rows="9" maxlength="4000"></textarea>
+          <div class="guide-copy-row"><button id="guideCopy" type="button" class="guide-btn" data-guide-key="copyExample">Скопировать задание</button><span id="guideCopyStatus" role="status" aria-live="polite"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <details class="container advanced-wrap" id="config">
+      <summary><span data-guide-key="advancedTitle">Для опытных: расширенный конфигуратор Work и Codex</span><small data-guide-key="advancedDesc">Пять профессиональных сценариев, модель, рассуждения, ограничения и промпты. Нажми, чтобы открыть.</small></summary>
+    <section class="container section" id="legacyConfig">
       <div class="section-head"><div><p class="kicker" data-i18n="sectionOne">01 / НАСТРОЙКА</p><h2 data-i18n="configTitle">Выбери задачу — получи план</h2></div><p data-i18n="configSubtitle">Рекомендации — отправная точка, а не гарантированная экономия.</p></div>
       <div class="config-grid">
         <div class="panel selector"><div class="panel-top"><span class="mini-label" data-i18n="taskPrompt">Что ты собираешься сделать?</span><span class="panel-index">01—05</span></div>
@@ -71,6 +140,8 @@
         </div>
       </div>
     </section>
+
+    </details>
 
     <section class="container section" id="limits"><div class="section-head"><div><p class="kicker" data-i18n="sectionTwo">02 / ОСНОВЫ</p><h2 data-i18n="limitsTitle">Пойми, что расходуется</h2></div><p data-i18n="limitsDesc">Токены, включённый лимит и кредиты — не одно и то же.</p></div>
       <div class="info-grid">

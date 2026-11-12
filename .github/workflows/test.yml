@@ -15,4 +15,6 @@ jobs:
         with:
           python-version: '3.12'
       - run: node --check website/app.js
+      - run: node --check website/guide.js
+      - run: node tests/test_guide.js
       - run: python3 -m unittest discover -s tests -v
