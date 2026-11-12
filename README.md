@@ -6,6 +6,16 @@
 
 TokenWise is a **free, static, privacy-first, bilingual (EN/RU) guide and task preset builder** for ChatGPT, Work and Codex users. It helps you **scope work, choose an appropriate mode, and measure actual usage**. It does **not** access your account or claim to predict token cost.
 
+
+## First-time users (V1.1)
+
+1. Choose a task, or tap the example about fixing a code bug.
+2. Follow the *What do I do with these settings?* panel. Choose model and reasoning manually in your ChatGPT / Codex interface; TokenWise never changes account settings.
+3. Enter your own task, copy the prompt and paste it into ChatGPT or Codex.
+4. Open **Settings → Usage** before and after the task if you wish to estimate observed allowance change. Only compare readings in the same window with no reset or concurrent agent work.
+
+Model suggestions are task heuristics, not prices, promises, or official OpenAI recommendations. This project is currently under private pre-release testing.
+
 ## What it includes
 
 - Interactive task configurator with Chat / Work / Codex suggestions and editable, copyable task prompts.
