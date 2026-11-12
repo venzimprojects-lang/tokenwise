@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="128" viewBox="0 0 780 128" role="img" aria-labelledby="title desc">
+<title id="title">OPEN TOKENWISE — LAUNCH WEB APP</title><desc id="desc">Open the free interactive web app in your browser.</desc>
+<rect x="3" y="3" width="774" height="122" rx="20" fill="#315f50"/>
+<rect x="3" y="3" width="774" height="122" rx="20" fill="none" stroke="#759a87" stroke-width="3"/>
+<text x="42" y="54" font-family="Arial,Helvetica,sans-serif" font-size="33" font-weight="700" fill="#fff">OPEN TOKENWISE</text>
+<text x="42" y="86" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#d9eae0">Free interactive configurator · No login required</text>
+<circle cx="708" cy="64" r="36" fill="#477c63"/>
+<path d="M694 75l28-27m-20 0h20v20" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5" fill="none"/>
+</svg>
