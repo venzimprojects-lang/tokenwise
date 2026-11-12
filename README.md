@@ -16,18 +16,20 @@
   <a href="CONTRIBUTING.md">Contribute</a>
 </p>
 
-TokenWise is a **free, static, privacy-first, bilingual (EN/RU) guide and task preset builder** for ChatGPT, Work and Codex. It helps you **scope work, choose an appropriate mode, and measure actual usage**. No account, API key, backend or installation needed.
+TokenWise is a **free, privacy-first, bilingual (EN/RU) interactive encyclopedia** for people using ChatGPT, Work and Codex. It offers practical guidance according to what you need help with and how experienced you are. No login, API key, backend or installation needed.
 
 ## Start in 3 steps
 
-1. **[Open TokenWise](https://venzimprojects-lang.github.io/tokenwise/)** and select what you want to do — planning, browsing, coding, debugging or auditing.
-2. Review the suggested settings, describe your task, and **copy the focused prompt** into ChatGPT or Codex. Settings must be selected manually in your own interface.
-3. Optionally record remaining allowance in **Settings → Usage** before and after to compare a single task. Make comparisons only in the same window, without resets or concurrent agents.
+1. **[Open TokenWise](https://venzimprojects-lang.github.io/tokenwise/)** and select your question: limits, models, prompts, usage, agent tools, or coding.
+2. Pick an explanation level: **beginner, everyday user, AI project builder or developer**. Follow your suggested steps. You can switch levels at any time.
+3. Explore **seven concise encyclopedia topics**, look up unfamiliar terms, or adapt and copy one of five ready-to-use prompts. An advanced Work/Codex configurator and optional usage calculator are below.
+
+TokenWise cannot access your subscription, remove limits or change model settings automatically. Advice is informational, not a guarantee of savings.
 
 ## What you'll find
 
-- Interactive task configurator with five scenarios, reasoning guidance and copyable prompts.
-- Plain-language explanations of tokens, five-hour/weekly allowance and usage resets.
+- Adaptive guidance for 4 experience levels and 6 common problems.
+- Searchable 7-topic encyclopedia, glossary and 5 editable everyday/developer prompts.
 - Manual usage comparison that runs entirely inside your browser; no account data is sent.
 - Focused prompts, a short `AGENTS.md` template, and bilingual documentation.
 
