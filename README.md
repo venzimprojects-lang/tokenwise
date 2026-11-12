@@ -2,6 +2,8 @@
 
 **Stop wasting AI allowance. Ship more with fewer agent loops.**
 
+## [🚀 OPEN TOKENWISE — LAUNCH WEB APP](https://venzimprojects-lang.github.io/tokenwise/)
+
 <p align="center">
   <a href="https://venzimprojects-lang.github.io/tokenwise/">
     <img src="assets/open-tokenwise.svg" alt="Open TokenWise — launch the free interactive web app" width="780">
